@@ -15,7 +15,7 @@ fish{
 */
 
 let fishKeep = [];
-let descriptor1 = [" ", "Enourmous", "Miniature", "Gargantuous", "Huge", "Average", "Thiqq", "Small", "Fat", "Scrawny", "Smeagol-lookin-mf"];
+let descriptor1 = [" ", "Enourmous", "Miniature", "Gargantuous", "Huge", "Average", "Thiqq", "Small", "Fat", "Scrawny", "Smeagol lookin mf"];
 let descriptor2 = [" ", "Red", "Green", "Blue", "Purple", "Silver", "Black", "Yellow", "Pink", "Orange", "Grey"];
 let fishType = [" ", "Pikachu", "Lugia", "Entei", "Zapdos", "Mew", "Mewtwo", "Ho-Ho", "Rayquaza", "Groudon", "Missing.No"];
 let superRare = ["First Edition Holo Charizard"];
@@ -24,6 +24,7 @@ let totalWeight = 0;
 let totalValue = 0;
 let totalFish = fishKeep.length;
 let timeCtr = 0;
+let newFish = {};
 
 /*
 for our descriptive words
@@ -73,28 +74,67 @@ let rngValue = () => {
     let value = (Math.ceil(Math.random() * 1000) / 50)
     return value
 }
+let runAllFunctions = () => {
+    let fullName = `${descriptor1[rng()]} ${descriptor2[rng()]} ${fishType[rng()]}`;
+    let weight = rngWeight();
+    let value = rngValue();
+    let newFish = rngFish(fullName, weight, value)
+    return newFish
+}
 
-let fullName = `${descriptor1[rng()]} ${descriptor2[rng()]} ${fishType[rng()]}`;
-
-let weight = rngWeight();
-
-let value = rngValue();
 
 // console.log(rngFish(fullName, weight, value));
-let newFish = rngFish(fullName, weight, value);
-console.log(newFish);
+// console.log(newFish);
 // let userInput = prompt()
-while (totalWeight < 11 && timeCtr < 7) {
-    //  rngFish(fullName, weight, value)
+console.log('It is time for the first round!')
+while (totalWeight < 10 && timeCtr < 6) {
+    console.log('\n======================================================\n');
+    // rngWeight();
+    // rngValue();
+    // rng();
+    // let fullName = `${descriptor1[rng()]} ${descriptor2[rng()]} ${fishType[rng()]}`;
+    // let weight = rngWeight();
+    // let value = rngValue();
+    // rngFish(fullName, weight, value)
+    // newFish = rngFish(fullName, weight, value)
+    newFish = runAllFunctions();
+    console.log(newFish);
     let userInput = prompt("Would you like to (c)atch this pokemon? OR Would you like to (r)elease this pokemon?: ")
     if (userInput === 'c') {
+        if (totalWeight + newFish.weight > 10) {
+            console.log('\n===You cannot catch this pokemon it will put you over your limit!===\n')
+            timeCtr++;
+            console.log('round #: ' + timeCtr)
+           continue;
+        }
         totalWeight += newFish.weight
-        console.log(newFish);
+        totalValue += newFish.value;
+        fishKeep.push(newFish.name)
+        // console.log('fullname: ' + newFish.name);
+        // console.log('weight: ' + newFish.weight);
+        // console.log('value: ' + newFish.value);
+        // console.log('newfish: ')
+        // console.log(newFish);
+        // console.log('fishkeep: ' + fishKeep);
     } else if (userInput === 'r') {
-        console.log('You have released the pokemon back to the wild!')
-        // console.log(rngFish(fullName, weight, value))
+        console.log('\n====You have released the pokemon back to the wild!====\n')
     }
-    console.log(totalWeight)
+    if (totalWeight >= 7)
+    console.log('\n===You are about to go over your weight limit of 10 lbs! Be careful!===\n')
+    
+    if (timeCtr === 4) {
+        console.log('The Next round is your last! MAKE IT COUNT!')
+    }
+    console.log(fishKeep)
+    console.log('total weight: ' + totalWeight)
+    console.log('total value: ' + totalValue)
+    console.log('total PokeMon caught: ' + fishKeep.length)
     timeCtr++
-    console.log(timeCtr);
+    console.log('round: ' + timeCtr);
 }
+console.log('that is the competition! Nice work!');
+console.log('the total weight of the pokemon you kept is: ' + totalWeight + 'lbs');
+console.log('the total value you kept is: $' + totalValue);
+console.log('total amount PokeMon kept: ' + fishKeep.length);
+console.log('Here are the name of the fish you caught!!!!!');
+console.log(fishKeep);
