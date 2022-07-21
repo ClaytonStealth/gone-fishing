@@ -15,9 +15,9 @@ fish{
 */
 
 let fishKeep = [];
-let descriptor1 = [" ","Enourmous", "Miniature", "Gargantuous", "Huge", "Average", "Thiqq", "Small", "Fat", "Scrawny", "Smeagol-lookin-mf"];
-let descriptor2 = [" ","Red", "Green", "Blue", "Purple", "Silver", "Black", "Yellow", "Pink", "Orange", "Grey"];
-let fishType = [" ","Pikachu", "Lugia", "Entei", "Zapdos", "Mew", "Mewtwo", "Ho-Ho", "Rayquaza", "Groudon", "Missing.No"];
+let descriptor1 = [" ", "Enourmous", "Miniature", "Gargantuous", "Huge", "Average", "Thiqq", "Small", "Fat", "Scrawny", "Smeagol-lookin-mf"];
+let descriptor2 = [" ", "Red", "Green", "Blue", "Purple", "Silver", "Black", "Yellow", "Pink", "Orange", "Grey"];
+let fishType = [" ", "Pikachu", "Lugia", "Entei", "Zapdos", "Mew", "Mewtwo", "Ho-Ho", "Rayquaza", "Groudon", "Missing.No"];
 let superRare = ["First Edition Holo Charizard"];
 let notRare = ["Magikarp"];
 let totalWeight = 0;
@@ -47,30 +47,30 @@ console.log('\n======================================================\n');
 
 
 let rngFish = (name, weight, value) => {
-        let newFish = {}
-        newFish.name = name,
+    let newFish = {}
+    newFish.name = name,
         newFish.weight = weight,
         newFish.value = value
-    
+
     return newFish;
 }
 
 
 
-let rng = () =>{
-  let result = (Math.ceil(Math.random()*10))
+let rng = () => {
+    let result = (Math.ceil(Math.random() * 10))
 
-  return result
+    return result
 
 }
 
 let rngWeight = () => {
-    let weight = (Math.ceil(Math.random()*1000)/200)
+    let weight = (Math.ceil(Math.random() * 1000) / 200)
     return weight
 }
 
-let rngValue = ()=> {
-    let value = (Math.ceil(Math.random()*1000)/50)
+let rngValue = () => {
+    let value = (Math.ceil(Math.random() * 1000) / 50)
     return value
 }
 
@@ -80,18 +80,21 @@ let weight = rngWeight();
 
 let value = rngValue();
 
-console.log(rngFish(fullName, weight, value));
-
-let userInput =prompt()
-while (totalWeight < 11 && timeCtr < 7){
-    rngFish(fullName, weight, value)
-console.log(`${fullName}, ${weight}, ${value}`)
-userInput =prompt("Would you like to (c)atch this pokemon? OR Would you like to (r)elease this pokemon?: ")
-if ( userInput === 'c'){
-    totalWeight+= weight
-}else if (userInput ==='r'){
-    
-}
-totalWeight+= weight
-timeCtr++
+// console.log(rngFish(fullName, weight, value));
+let newFish = rngFish(fullName, weight, value);
+console.log(newFish);
+// let userInput = prompt()
+while (totalWeight < 11 && timeCtr < 7) {
+    //  rngFish(fullName, weight, value)
+    let userInput = prompt("Would you like to (c)atch this pokemon? OR Would you like to (r)elease this pokemon?: ")
+    if (userInput === 'c') {
+        totalWeight += newFish.weight
+        console.log(newFish);
+    } else if (userInput === 'r') {
+        console.log('You have released the pokemon back to the wild!')
+        // console.log(rngFish(fullName, weight, value))
+    }
+    console.log(totalWeight)
+    timeCtr++
+    console.log(timeCtr);
 }
