@@ -82,10 +82,16 @@ let value = rngValue();
 
 console.log(rngFish(fullName, weight, value));
 
-
+let userInput =prompt()
 while (totalWeight < 11 && timeCtr < 7){
     rngFish(fullName, weight, value)
 console.log(`${fullName}, ${weight}, ${value}`)
+userInput =prompt("Would you like to (c)atch this pokemon? OR Would you like to (r)elease this pokemon?: ")
+if ( userInput === 'c'){
+    totalWeight+= weight
+}else if (userInput ==='r'){
+    
+}
 totalWeight+= weight
 timeCtr++
 }
