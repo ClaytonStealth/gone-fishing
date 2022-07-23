@@ -126,9 +126,9 @@ while (totalWeight < 10 && timeCtr < 6) {
     timeCtr++
     console.log('round #: ' + timeCtr);
 }
-console.log('that is the competition! Nice work!');
-console.log('the total weight of the pokemon you kept is: ' + totalWeight + 'lbs');
-console.log('the total value you kept is: $' + totalValue);
-console.log('total amount PokeMon kept: ' + fishKeep.length);
+console.log('That is the competition! Nice work!');
+console.log('The total weight of the pokemon you kept is: ' + totalWeight + 'lbs');
+console.log('The total value you kept is: $' + totalValue);
+console.log('Total amount PokeMon you have kept: ' + fishKeep.length);
 console.log('Here are the different kinds of Pokemon you caught!!!!!');
 console.log(fishKeep);
