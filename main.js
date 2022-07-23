@@ -41,7 +41,7 @@ for our descriptive words
 //need fishKeep.length to track how many fish have been kept = totalFish
 
 
-console.log("You are a Pokemon trainer! You have only 6 hours to catch as many pokemon as you can with the total weight 10lbs or under.  It takes roughly 1 hours to catch each pokemon (they are slippery little buggers). The goal is to keep it under 10lbs and maximize your value over 6 hours.")
+console.log("You are a Pokemon trainer! You have only 6 hours to catch as many pokemon as you can with the total weight 10lbs or under.  It takes roughly 1 hours to catch each pokemon (they are slippery little buggers). The goal is to keep it under 10lbs and maximize your value over 6 rounds.")
 
 console.log('\n======================================================\n');
 
@@ -110,12 +110,6 @@ while (totalWeight < 10 && timeCtr < 6) {
         totalWeight += newFish.weight
         totalValue += newFish.value;
         fishKeep.push(newFish.name)
-        // console.log('fullname: ' + newFish.name);
-        // console.log('weight: ' + newFish.weight);
-        // console.log('value: ' + newFish.value);
-        // console.log('newfish: ')
-        // console.log(newFish);
-        // console.log('fishkeep: ' + fishKeep);
     } else if (userInput === 'r') {
         console.log('\n====You have released the pokemon back to the wild!====\n')
     }
@@ -125,16 +119,16 @@ while (totalWeight < 10 && timeCtr < 6) {
     if (timeCtr === 4) {
         console.log('The Next round is your last! MAKE IT COUNT!')
     }
-    console.log(fishKeep)
+    // console.log('Pokemon Caught so far: ' + fishKeep)
     console.log('total weight: ' + totalWeight)
     console.log('total value: ' + totalValue)
     console.log('total PokeMon caught: ' + fishKeep.length)
     timeCtr++
-    console.log('round: ' + timeCtr);
+    console.log('round #: ' + timeCtr);
 }
 console.log('that is the competition! Nice work!');
 console.log('the total weight of the pokemon you kept is: ' + totalWeight + 'lbs');
 console.log('the total value you kept is: $' + totalValue);
 console.log('total amount PokeMon kept: ' + fishKeep.length);
-console.log('Here are the name of the fish you caught!!!!!');
+console.log('Here are the different kinds of Pokemon you caught!!!!!');
 console.log(fishKeep);
